@@ -1,0 +1,38 @@
+---
+import BaseHead from "@layouts/BaseHead.astro";
+import "@styles/global.css";
+
+// heroImage y authorData se definen en las entradas del blog
+// authorData también podría definirse en la página "sobre el autor"
+interface Props {
+	type?: "general";
+	navStartStyle?: "default" | "white";
+	title: string;
+	description: string;
+	heroImage?: ImageMetadata;
+	noindex?: boolean; // debes activar manualmente la opción de no indexar, ya que oculta la página de los motores de búsqueda
+}
+
+const { type = "general", navStartStyle = "default", title, description, heroImage, noindex = false } = Astro.props as Props;
+---
+
+<!doctype html>
+<html lang="es" transition:animate="fade">
+	<head>
+		<BaseHead type={type} title={title} description={description} image={heroImage ? heroImage : undefined} noindex={noindex} />
+	</head>
+	<body class="mandendev-body">
+		<slot />
+	</body>
+</html>
+
+<style>
+	@reference "@styles/global.css";
+	:root {
+		view-transition-name: root;
+	}
+
+	.mandendev-body {
+		@apply text-main font-elenaCibaja-parrafos bg-background m-0 block leading-5 antialiased;
+	}
+</style>

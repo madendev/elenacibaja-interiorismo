@@ -1,0 +1,76 @@
+---
+import ContactForm from "@/components/Forms/ContactForm.astro";
+import NavLeft from "@/components/NavLeft/NavLeft.astro";
+import { SOCIAL } from "@/data/constants";
+import MainLayout from "@/layouts/MainLayout.astro";
+---
+
+<MainLayout title="Contacto | Elena Cibaja - Diseñadora de Interiores" description="Diseño de interiores ...">
+	<div class="mandendev-wrapper">
+		<NavLeft />
+		<main class="mandendev-main-container md:flex">
+			<section class="mandendev-section">
+				<div>
+					<h1 class="mandendev-section-h1" transition:name="contacto-trans">Hola.</h1>
+					<div class="mandendev-section-wrapper">
+						<p>Si tienes alguna duda o necesitas más información, no dudes en ponerte en contacto conmigo.</p>
+						<p>Estoy a tu disposición para ayudarte en lo que necesites.</p>
+						<br />
+						<span
+							>Email: <a class="mandenvi-section-link" href="mailto:elenacibaja.interiorismo@gmail.com">elenacibaja.interiorismo@gmail.com</a></span
+						>
+						<br />
+						<span>
+							En internet:
+							{
+								SOCIAL.map(({ nombre, link }, idx) => (
+									<>
+										<a class="mandenvi-section-link" href={link} target="_blank">
+											{nombre}
+										</a>
+										{idx < SOCIAL.length - 1 && " | "}
+									</>
+								))
+							}
+						</span>
+					</div>
+				</div>
+			</section>
+			<section class="md:pr-12 md:pl-60">
+				<ContactForm />
+			</section>
+		</main>
+	</div>
+</MainLayout>
+
+<style>
+	@reference "@styles/global.css";
+
+	.mandendev-wrapper {
+		@apply bg-main text-background relative z-[500px];
+	}
+
+	.mandendev-main-container {
+		@apply relative mr-auto ml-auto max-w-[100%] pr-[5%] pl-[10%];
+		@apply max-lg:max-w-[80%] max-lg:pl-[5%];
+		@apply px-[10%] max-md:max-w-full;
+		@apply max-sm:pb-[10%];
+	}
+	.mandendev-section {
+		@apply flex h-screen w-[25%] flex-col items-center justify-center;
+		@apply max-lg:static max-lg:w-full;
+		@apply max-md:pt-[20%];
+	}
+	.mandendev-section-h1 {
+		@apply font-elenaCibaja-parrafos relative mx-0 mt-[52px] mb-[35px] pb-0 text-[14vw] leading-4 font-light tracking-[-3px];
+		@apply max-md:-mt-40 max-md:text-[17vw];
+	}
+	.mandendev-section-wrapper {
+		@apply relative mx-0 block max-w-[80%] pt-20 text-sm leading-[1.9em];
+		@apply max-lg:max-w-[100%];
+		@apply max-md:text-xs;
+	}
+	.mandenvi-section-link {
+		@apply transition-all duration-300 ease-in-out hover:line-through;
+	}
+</style>

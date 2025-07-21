@@ -1,0 +1,101 @@
+---
+import Button from "@components/Button/Button.astro";
+
+const errors = {
+	"nombre-usuario": "Por favor, introduce tu nombre.",
+	"correo-electronico": "Por favor, introduce un correo electrónico válido.",
+	"mensaje-usuario": "Por favor, escribe un mensaje.",
+	"politica-privacidad": "Debes aceptar la política de privacidad.",
+};
+
+if (Astro.request.method === "POST") {
+	try {
+		const formData = await Astro.request.formData();
+		const nombreUsuario = formData.get("nombre-usuario");
+		const correoElectronico = formData.get("correo-electronico");
+		const mensaje = formData.get("mensaje-usuario");
+		const politicaPrivacidad = formData.get("politica-privacidad");
+
+		console.log("Datos del formulario:", {
+			nombreUsuario,
+			correoElectronico,
+			mensaje,
+			politicaPrivacidad,
+		});
+
+		if (!politicaPrivacidad) {
+			throw new Error(errors["politica-privacidad"]);
+		}
+		if (!nombreUsuario || typeof nombreUsuario !== "string") {
+			throw new Error(errors["nombre-usuario"]);
+		}
+		if (!correoElectronico || typeof correoElectronico !== "string" || !/\S+@\S+\.\S+/.test(correoElectronico)) {
+			throw new Error(errors["correo-electronico"]);
+		}
+		if (!mensaje || typeof mensaje !== "string") {
+			throw new Error(errors["mensaje-usuario"]);
+		}
+	} catch (error) {
+		if (error instanceof Error) {
+			// Manejo de errores específicos del formulario
+			console.error("Error al enviar el formulario:", error.message);
+			// Aquí podrías mostrar un mensaje de error al usuario
+		} else {
+			// Manejo de errores generales
+			console.error("Error inesperado:", error);
+		}
+	}
+}
+---
+
+<form method="post" id="contact-form" name="contact form" class="flex h-full flex-col justify-center gap-4">
+	<input type="hidden" name="form-name" value="contact" />
+	<div>
+		<label for="nombre-usuario" class="font-heading-1 text-lg uppercase">Nombre</label>
+		<input type="text" class="form__input" name="nombre-usuario" id="nombre-usuario" placeholder="" required />
+		{/* Aquí podrías mostrar un mensaje de error si es necesario */}
+		{errors["nombre-usuario"] && <span class="text-red-500">{errors["nombre-usuario"]}</span>}
+	</div>
+	<div class="flex flex-col gap-1">
+		<label for="correo-electronico" class="font-heading-1 text-lg uppercase">Correo Electrónico</label>
+		<input type="email" class="form__input" name="correo-electronico" id="correo-electronico" inputmode="email" placeholder="" required />
+		{/* Aquí podrías mostrar un mensaje de error si es necesario */}
+		{errors["correo-electronico"] && <span class="text-red-500">{errors["correo-electronico"]}</span>}
+	</div>
+
+	<div>
+		<label for="mensaje-usuario" class="font-heading-1 text-lg uppercase">Mensaje</label>
+		<textarea name="mensaje-usuario" class="form__input" id="mensaje-usuario" rows="6" placeholder="" required></textarea>
+		{/* Aquí podrías mostrar un mensaje de error si es necesario */}
+		{errors["mensaje-usuario"] && <span class="text-red-500">{errors["mensaje-usuario"]}</span>}
+	</div>
+	<div>
+		<label for="politica-privacidad" class="form__label">
+			<input type="checkbox" name="politica-privacidad" id="politica-privacidad" required />
+			He leído y acepto la <a href="/politica-de-privacidad" class="text-acplaceholder-accent-modern underline">Política de Privacidad</a>
+			{/* Aquí podrías mostrar un mensaje de error si es necesario */}
+			{errors["politica-privacidad"] && <div class="text-red-500">{errors["politica-privacidad"]}</div>}
+		</label>
+	</div>
+	<div class="flex">
+		<Button variant="primary" type="submit" class="w-full px-10 md:w-fit">Enviar</Button>
+	</div>
+
+	<style>
+		@reference "@styles/global.css";
+
+		.form__label {
+			@apply text-background;
+		}
+
+		.form__input {
+			@apply border-background text-background placeholder-accent-modern w-full rounded-none border bg-transparent px-4 py-2 transition duration-200 outline-none;
+			@apply focus:border-accent-modern placeholder-accent-modern focus-visible:border-accent-modern focus:ring-0 focus:outline-none focus-visible:outline-none;
+		}
+
+		/* styles navbar links */
+		.nav__link--base {
+			@apply font-elenaCibaja-titulos px-4 py-2 tracking-wide uppercase transition duration-200 hover:opacity-80;
+		}
+	</style>
+</form>

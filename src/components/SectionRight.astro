@@ -1,0 +1,48 @@
+<section class="mandendev-section">
+	<nav class="mandedev-nav">
+		<ul>
+			<li class="mandendev-nav-li">
+				<a href="/sobremi" class="mandendev-nav-li-a" transition:name="sobremi-trans">Sobre Mi</a>
+			</li>
+			<li class="mandendev-nav-li">
+				<a href="/servicios" class="mandendev-nav-li-a" transition:name="servicios-trans">Servicios</a>
+			</li>
+			<li class="mandendev-nav-li">
+				<a href="/portafolio" class="mandendev-nav-li-a" transition:name="portafolio-trans">Portafolio</a>
+			</li>
+			<li class="mandendev-nav-li">
+				<a href="/contacto" class="mandendev-nav-li-a" transition:name="contacto-trans">Contacto</a>
+			</li>
+		</ul>
+	</nav>
+</section>
+
+<style>
+	@reference "@styles/global.css";
+
+	.mandendev-section {
+		@apply relative top-0 right-0 bottom-0 left-auto float-right grid h-[90vh] w-[65%] auto-cols-auto grid-cols-2 grid-rows-2 items-center justify-center pt-[5vh];
+		@apply max-lg:w-[100%] max-md:h-[100vh] max-md:pt-0 md:block;
+		@apply max-md:pt-[2vh];
+		@apply max-sm:pt-0;
+	}
+
+	.mandendev-nav {
+		@apply pt-[10%] pl-[6%] text-right;
+		@apply max-lg:pt-[10%] max-lg:pl-[0%];
+		@apply max-md:pt-[2%];
+		@apply max-sm:pt-[10%];
+	}
+
+	.mandendev-nav-li {
+		@apply relative inline-block pr-[5%] text-right;
+		@apply max-lg:block max-lg:pb-[2%];
+		@apply max-md:pb-[4%];
+	}
+	.mandendev-nav-li-a {
+		@apply font-elenaCibaja-parrafos text-main hover:text-accent-modern relative z-[100] block border-0 text-left text-[8vw] leading-[8vw] font-medium text-nowrap uppercase no-underline delay-100 duration-300 hover:translate-x-4 hover:-skew-x-6;
+		@apply max-lg:tracking-[-5px];
+		@apply max-md:tracking-[-1px];
+		@apply max-sm:text-[12vw] max-sm:leading-[12vw];
+	}
+</style>

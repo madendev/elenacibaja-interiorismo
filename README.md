@@ -46,3 +46,5 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+[(https://raw.githubusercontent.com/tailwindlabs/tailwindcss-typography/HEAD/.github/logo-dark.svg)](https://github.com/tailwindlabs/tailwindcss-typography)

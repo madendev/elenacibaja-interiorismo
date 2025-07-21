@@ -1,0 +1,122 @@
+---
+import { Icon } from "astro-icon/components";
+
+/**
+ *  * Notas:
+ *  si esto es un enlace (<a>), pasa una prop "href"
+ *  si esto es un botón (<button>), pasa una prop "type"
+ *  puedes pasar la prop arrow con "left" o "right" para añadir una flecha a cualquier variante de botón
+ */
+interface Props {
+	type?: "button" | "submit" | "reset" | null | undefined;
+	variant?: "primary" | "secondary" | "outline" | "ghost";
+	href?: string; // la URL a la que ir, ej: "/posts/"
+	target?: string; // el destino para el enlace, ej: "_blank"
+	rel?: string; // el atributo rel para el enlace, ej: "noopener"
+	arrow?: "left" | "right" | "none";
+	onclick?: any; // cualquier evento de clic que quieras pasar
+	class?: string; // cualquier clase adicional
+	rest?: any; // catch-all para cualquier parámetro adicional, como "aria-label"
+}
+
+const { type, variant = "primary", href, arrow = "none", onclick, class: className, ...rest } = Astro.props as Props;
+---
+
+<!-- Enlace normal -->{
+	href && (
+		<a
+			class:list={[
+				className,
+				`button group gap-2`,
+				{
+					"button--primary": variant === "primary",
+				},
+				{
+					"button--secondary": variant === "secondary",
+				},
+				{
+					"button--outline": variant === "outline",
+				},
+				{
+					"button--ghost": variant === "ghost",
+				},
+			]}
+			href={href}
+			onclick={onclick}
+			{...rest}
+		>
+			{arrow === "left" && <Icon name="mynaui/arrow-long-right" class="h-[1.4em] w-[1.4em] rotate-180 transition-[transform]" aria-hidden="true" />}
+			<span>
+				<slot />
+			</span>
+			{arrow === "right" && <Icon name="mynaui/arrow-long-right" class="h-[1.4em] w-[1.4em] transition-[transform]" aria-hidden="true" />}
+		</a>
+	)
+}
+
+<!-- botón para "submit" u otros -->
+{
+	!href && (
+		<button
+			class:list={[
+				className,
+				`button group gap-2`,
+				{
+					"button--primary": variant === "primary",
+				},
+				{
+					"button--secondary": variant === "secondary",
+				},
+				{
+					"button--outline": variant === "outline",
+				},
+				{
+					"button--ghost": variant === "ghost",
+				},
+			]}
+			type={type}
+			onclick={onclick}
+			{...rest}
+		>
+			{arrow === "left" && <Icon name="mynaui/arrow-long-right" class="h-[1.4em] w-[1.4em] rotate-180 transition-[transform]" aria-hidden="true" />}
+			<span>
+				<slot />
+			</span>
+			{arrow === "right" && <Icon name="mynaui/arrow-long-right" class="h-[1.4em] w-[1.4em] transition-[transform]" aria-hidden="true" />}
+		</button>
+	)
+}
+
+<style>
+	@reference "@styles/global.css";
+
+	/* buttons, 4 types "primary", "secondary", "outline", "ghost" */
+	.button {
+		@apply font-elenaCibaja-titulos flex items-center justify-center rounded-none px-4 py-2 text-lg tracking-wide uppercase transition duration-200;
+		@apply active:opacity-80;
+		@apply disabled:pointer-events-none;
+	}
+
+	.button--primary {
+		@apply bg-background text-main;
+		@apply hover:bg-accent-modern/80;
+		@apply focus-visible:ring-main;
+	}
+
+	.button--secondary {
+		@apply border-2;
+		/* @apply hover:border-opacity-80; */
+		@apply focus-visible:ring-main;
+	}
+
+	.button--outline {
+		@apply border-main text-main border-2;
+		@apply hover:border-main/80;
+		@apply focus-visible:ring-main;
+	}
+
+	.button--ghost {
+		@apply text-main;
+		@apply hover:opacity-80;
+	}
+</style>

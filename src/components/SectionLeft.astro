@@ -1,0 +1,66 @@
+<section class="mandendev-section">
+	<header class="mandendev-header">
+		<div class="mandendev-logo">
+			<svg class="mb-4 w-12" data-name="Capa 2" viewBox="0 0 100 100.73">
+				<path
+					d="M0 0v100.73h100V0H0Zm3 9.99h45.51v3.99H3V9.99Zm76.12 38.82V3h3.99v45.81h-3.99Zm-2.99 0h-3.99V3h3.99v45.81Zm-6.99 0h-3.99V3h3.99v45.81Zm-6.99 0h-3.99V3h3.99v45.81Zm-6.99 0H51.5V3h3.66v45.81ZM3 37.95h45.51v3.93H3v-3.93Zm0-20.97h45.51v3.99H3v-3.99Zm0 6.99h45.51v3.99H3v-3.99Zm0 6.99h45.51v3.99H3v-3.99Zm0 13.91h45.51v3.93H3v-3.93Zm10.58 6.93v45.94H9.59V51.8h3.99Zm3 0h3.99v45.94h-3.99V51.8Zm6.99 0h3.99v45.94h-3.99V51.8Zm6.99 0h3.99v45.94h-3.99V51.8Zm6.99 0h3.93v45.94h-3.93V51.8Zm6.93 0h4.03v45.94h-4.03V51.8ZM97 83.79H51.49V79.8H97v3.99Zm0-6.99H51.49v-3.99H97v3.99Zm-45.5 9.98h45.51v3.93H51.5v-3.93ZM97 69.81H51.49v-3.99H97v3.99Zm0-6.99H51.49v-3.99H97v3.99Zm0-6.99H51.49V51.8H97v4.03Zm-10.89-7.02V3h3.93v45.81h-3.93ZM48.5 3v3.99H3V3h45.51ZM3 51.8h3.6v45.94H3V51.8Zm48.5 45.94v-4.03h45.51v4.03H51.5ZM97 48.81h-3.96V3H97v45.81Z"
+					style="fill:currentColor;stroke-width:0;"
+					data-name="Capa 1"
+				>
+				</path>
+			</svg>
+			<h1 class="mandendev-h1">Elena Cibaja</h1>
+		</div>
+		<h2 class="mandendev-h2">Explorando la Creatividad y la Funcionalidad</h2>
+		<p class="mandendev-p">
+			Bienvenido a mi mundo de diseño de interiores. Soy una estudiante apasionada, cada proyecto cuenta una historia de creatividad, armonía y
+			funcionalidad. ✨🏡
+		</p>
+	</header>
+</section>
+
+<style>
+	@reference "@styles/global.css";
+
+	.mandendev-section {
+		@apply fixed flex h-screen w-1/4 flex-col items-start justify-center;
+		@apply max-lg:static max-lg:h-auto max-lg:w-full max-lg:pt-[30%];
+		@apply max-md:pt-[20%];
+		@apply max-sm:pt-[12%];
+	}
+
+	.mandendev-header {
+		@apply ml-[-10%] pt-[90%];
+		@apply max-lg:ml-0 max-lg:pt-0;
+	}
+
+	.mandendev-logo {
+		@apply mb-[2vh] overflow-hidden pt-[5%];
+		@apply max-lg:pt-[10%];
+		@apply max-sm:mb-[1vh];
+	}
+
+	.mandendev-h1 {
+		@apply font-elenaCibaja-titulos relative my-0 text-left text-lg font-bold tracking-[2px] uppercase;
+	}
+
+	.mandendev-h2 {
+		@apply relative mr-0 ml-0 block max-w-[80%] overflow-hidden text-lg font-normal;
+		@apply max-lg:max-w-full;
+		@apply max-md:text-sm;
+	}
+
+	.mandendev-p {
+		@apply relative mt-[2vh] mr-0 ml-0 block max-w-[80%] overflow-hidden text-sm font-normal;
+		@apply max-lg:max-w-full;
+		@apply max-md:text-xs;
+	}
+
+	.header-p {
+		display: block;
+		overflow: hidden;
+	}
+	.mandendev-article-span {
+		@apply font-elenaCibaja-parrafos block text-[36px] leading-[1.3em] font-light;
+	}
+</style>

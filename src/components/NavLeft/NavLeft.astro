@@ -1,0 +1,54 @@
+---
+
+---
+
+<aside class="mandendev-aside">
+	<li class="mandendev-aside-li">
+		<a href="/" class="mandendev-aside-li-a">HOME</a>
+	</li>
+	<span class="mandendev-aside-li-line"></span>
+	<span class="mandendev-aside-li mandendev-aside-li-copyright">
+		<strong class="mandendev-copyright">©/{new Date().getFullYear()}</strong>
+	</span>
+</aside>
+
+<style>
+	@reference "@styles/global.css";
+
+	.mandendev-aside {
+		@apply fixed z-[600] flex h-full w-[6%] flex-col items-center justify-start pt-[5%] pb-8;
+		@apply max-lg:w-[10%] max-lg:pl-[2px];
+		@apply max-md:static max-md:h-auto max-md:w-full max-md:flex-row max-md:justify-between max-md:pb-0 max-md:pl-0;
+		@apply max-sm:px-[7%];
+	}
+
+	.mandendev-aside-li {
+		@apply mb-10 flex-initial -rotate-90 list-none pr-4 pl-5;
+		@apply max-md:mb-0 max-md:rotate-0;
+		@apply max-sm:px-[10px] max-sm:text-center;
+	}
+
+	.mandendev-aside-li > a {
+		@apply cursor-pointer hover:line-through;
+	}
+	.mandendev-aside-li-a {
+		@apply block text-center text-xs font-medium tracking-[5px] transition-opacity duration-300;
+	}
+
+	.mandendev-aside-li-line {
+		@apply bg-main mt-[10px] mb-[80px] h-[100px] w-[1px];
+		@apply max-md:mt-0 max-md:mb-0 max-md:h-[1px] max-md:w-[100px];
+		@apply max-sm:mr-[17px] max-sm:ml-[7px] max-sm:w-[40px] max-sm:pr-0;
+	}
+
+	.mandendev-aside-li-copyright {
+		@apply absolute top-auto bottom-[3vh] w-[110px];
+		@apply max-md:relative max-md:top-auto max-md:bottom-auto;
+		@apply max-sm:top-auto max-sm:bottom-auto max-sm:px-0;
+	}
+
+	.mandendev-copyright {
+		@apply text-center text-xs font-medium tracking-[4px];
+		@apply max-md:text-right;
+	}
+</style>

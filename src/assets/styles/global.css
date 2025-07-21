@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Ysabeau:ital@0;1&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400..900;1,400..900&family=Ysabeau:ital@0;1&display=swap");
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+	--font-Vollkorn: "Vollkorn";
+	--font-Ysabeau: "Ysabeau";
+
+	--font-elenaCibaja-titulos: var(--font-Vollkorn);
+	--font-elenaCibaja-parrafos: var(--font-Ysabeau);
+
+	--color-main: #2a2a2a;
+	--color-background: #f0ede2;
+	--color-accent-modern: #507b9f;
+	--color-accent-warm: #9d8877;
+}

@@ -1,0 +1,123 @@
+---
+import { Image } from "astro:assets";
+
+import elenaCibajaImage from "@images/elena-cibaja-foto-perfil.jpg";
+
+import { SITE } from "@/data/constants";
+import { SOBREMI } from "@/data/sobremi";
+
+import NavLeft from "@/components/NavLeft/NavLeft.astro";
+import SeparadorParrafo from "@/components/ui/SeparadorParrafo.astro";
+import { SOCIAL } from "@/data/constants";
+import MainLayout from "@/layouts/MainLayout.astro";
+---
+
+<MainLayout title={SOBREMI.title} description={SITE.description}>
+	<div class="mandendev-wrapper">
+		<NavLeft />
+		<main class="mandendev-main-container prose-slate">
+			<article class="mandendev-main-article">
+				<figure class="mandendev-article-figure">
+					<Image class="mandendev-article-img" src={elenaCibajaImage} alt="Elena Cibaja - Diseñadora de Interiores" loading="lazy" />
+				</figure>
+				<h1 class="mandendev-article-h1" transition:name="sobremi-trans">{SOBREMI.title}</h1>
+				<p class="mandendev-article-p">
+					<span class="mandendev-article-span">{SOBREMI.primeraSeccion.encabezado1}</span>
+					<SeparadorParrafo />
+					{SOBREMI.primeraSeccion.parrafo1}
+					<SeparadorParrafo />
+					{SOBREMI.primeraSeccion.parrafo2}
+					<SeparadorParrafo />
+					{SOBREMI.primeraSeccion.parrafo3}
+					<SeparadorParrafo />
+					<span class="mandendev-article-span">{SOBREMI.primeraSeccion.encabezado2}</span>
+					<SeparadorParrafo />
+					{SOBREMI.primeraSeccion.parrafo4}
+					<SeparadorParrafo />
+					{SOBREMI.primeraSeccion.parrafo5}
+					<SeparadorParrafo />
+					{SOBREMI.primeraSeccion.parrafo6}
+				</p>
+				<SeparadorParrafo />
+				<SeparadorParrafo />
+				<h3 class="mandendev-article-span">Experiencia</h3>
+				<p class="mandendev-article-p">
+					<span class="mandendev-article-p-span"> 2020 - Actualidad: </span> Trabajo como Diseñadora de Interiores Freelance, creando espacios únicos y
+					funcionales para clientes residenciales y comerciales.
+				</p>
+				<SeparadorParrafo />
+				<SeparadorParrafo />
+				<h3 class="mandendev-article-span">Educación</h3>
+				<p class="mandendev-article-p">
+					<span class="mandendev-article-p-span"> 2020 / 2021:</span> Técnico experto en diseño de interiores / ESNECA.
+					<br />
+					<span class="mandendev-article-p-span"> 2022 / Actualidad:</span> Grado en diseño de interiores / UNIR (Finalizando 3º curso).
+				</p>
+				<SeparadorParrafo />
+
+				<a class="mandendev-article-button" href="/CV-Elena-Cibaja-Interiorismo.pdf" target="_blank"> My CV </a>
+				<SeparadorParrafo />
+				<SeparadorParrafo />
+				<h3 class="mandendev-article-span">Habilidades</h3>
+				<p class="mandendev-article-p">
+					<span class="mandendev-article-p-span"> Diseño de interiores: </span> Creación de planos, selección de mobiliario, iluminación, textiles y accesorios.
+					<br />
+					<span class="mandendev-article-p-span"> Decoración: </span> Creación de ambientes, selección de colores, texturas y estilos.
+					<br />
+					<span class="mandendev-article-p-span"> Software: </span> AutoCAD, SketchUp, 3ds Max, V-Ray, Photoshop, Illustrator, InDesign.
+					<br />
+					<span class="mandendev-article-p-span"> Idiomas: </span> Español, Inglés, Francés.
+				</p>
+				<SeparadorParrafo />
+				<a class="mandendev-article-button" href={SOCIAL[3].link} target="_blank">¿Hablamos?</a>
+			</article>
+		</main>
+	</div>
+</MainLayout>
+<style>
+	@reference "@styles/global.css";
+
+	.mandendev-wrapper {
+		@apply relative z-[500px];
+	}
+
+	.mandendev-main-container {
+		@apply relative mr-auto ml-auto max-w-[100%] pr-[5%] pl-[10%];
+		@apply max-lg:max-w-[80%] max-lg:pl-[5%];
+		@apply px-[10%] max-md:max-w-full;
+		@apply max-sm:pb-[10%];
+	}
+	.mandendev-main-article {
+		@apply relative flex h-auto max-w-3xl flex-col items-start justify-center pt-[10%] pb-[12%];
+		@apply max-lg:static max-lg:h-auto max-lg:w-full max-lg:pt-[30%];
+		@apply max-md:pt-[20%];
+	}
+
+	.mandendev-article-img {
+		@apply absolute top-0 right-0 bottom-0 left-auto block aspect-[4/5] w-[50%] max-w-full overflow-clip border-0 object-cover align-middle;
+		@apply top-0 right-[10%] bottom-0 left-0 mt-[5%] mr-[10%] ml-0 max-lg:w-[40%];
+		@apply top-0 right-0 bottom-0 left-auto mr-[-5%] max-md:w-[35%];
+	}
+	.mandendev-article-h1 {
+		@apply font-elenaCibaja-titulos relative mx-0 mt-[52px] mb-[35px] block overflow-hidden pt-[5%] text-left text-[14vw] leading-[1em] font-light tracking-[-3px] text-nowrap;
+	}
+	.mandendev-article-p {
+		@apply relative mr-0 mb-0 ml-0 block max-w-[90%] text-left text-sm text-[1.2em] leading-[1.9em] font-normal tracking-[-0.5px];
+		@apply max-lg:max-w-[100%];
+	}
+
+	.mandendev-article-p-span {
+		@apply decoration-accent-modern underline decoration-2 underline-offset-2;
+	}
+
+	.mandendev-article-span {
+		@apply font-elenaCibaja-parrafos block text-[36px] leading-[1.3em] font-light;
+	}
+	.mandendev-article-h3 {
+		@apply font-elenaCibaja-parrafos relative my-0 text-left text-xl leading-7 font-medium tracking-[4px] uppercase;
+	}
+	.mandendev-article-button {
+		@apply bg-main text-background font-elenaCibaja-parrafos inline-block cursor-pointer rounded-[50px] border-0 px-[60px] py-5 text-xl font-normal tracking-[1px] transition-all duration-300;
+		@apply hover:px-[100px];
+	}
+</style>

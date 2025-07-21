@@ -1,0 +1,20 @@
+---
+// main layout
+// components
+import MainLayout from "@/layouts/MainLayout.astro";
+import Button from "@components/Button/Button.astro";
+---
+
+<MainLayout title="404" description="Error 404 pagina no encontrada." noindex={true}>
+	<section class="site-container pt-36 text-center md:pt-44">
+		<div class="mx-auto max-w-xl px-4 text-center">
+			<h1 class="h1">Página no encontrada!</h1>
+			<p class="description mt-4">
+				Lo sentimos, uno de nuestros enlaces debe estar roto. Por favor, inténtalo de nuevo o vuelve a la página principal.
+			</p>
+			<div class="mt-8 flex justify-center">
+				<Button type="button" variant="primary" href="/">Ir al inicio</Button>
+			</div>
+		</div>
+	</section>
+</MainLayout>

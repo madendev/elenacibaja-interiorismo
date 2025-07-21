@@ -1,11 +1,33 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import NavLeftIndex from "@/components/NavLeft/NavLeftIndex.astro";
+import SectionLeft from "@/components/SectionLeft.astro";
+import SectionRight from "@/components/SectionRight.astro";
+import MainLayout from "@/layouts/MainLayout.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const title = "Landing Page y Portfolio de Elena Cibaja, Diseñadora de Interiores en el Sur de España";
+const description =
+	"Bienvenido a mi portfolio, donde podrás explorar mis proyectos de diseño de interiores y conocer más sobre mi trabajo en el sur de España.";
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<MainLayout title={title} description={description}>
+	<NavLeftIndex />
+	<main class="mandendev-main-container">
+		<SectionLeft />
+		<SectionRight />
+	</main>
+</MainLayout>
+
+<style>
+	@reference "@styles/global.css";
+
+	.mandendev-wrapper {
+		@apply relative z-[500px];
+	}
+
+	.mandendev-main-container {
+		@apply relative mr-auto ml-auto max-w-[100%] pr-[5%] pl-[10%];
+		@apply max-lg:max-w-[80%] max-lg:pl-[5%];
+		@apply px-[10%] max-md:max-w-full;
+		@apply max-sm:pb-[10%];
+	}
+</style>
